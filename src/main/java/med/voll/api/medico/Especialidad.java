@@ -5,4 +5,5 @@ public enum Especialidad {
     CARDIOLOGIA,
     GINECOLOGIA,
     PEDIATRIA,
+    ;
 }
