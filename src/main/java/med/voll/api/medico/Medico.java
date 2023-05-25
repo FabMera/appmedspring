@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.direccion.Direccion;
 
+@SuppressWarnings("all")
 @Table(name = "medicos")
 @Entity(name = "Medico")
 @Getter

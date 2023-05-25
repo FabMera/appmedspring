@@ -13,13 +13,15 @@ import med.voll.api.direccion.Direccion;
 @AllArgsConstructor
 @Entity(name = "Paciente")
 @Table(name = "pacientes")
+
 public class Paciente {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String email;
     private String telefono;
-    private String documentoIdentidad;
+    @Column(name = "documento_identidad")
+    private String documento;
 
     @Embedded
     private Direccion direccion;
@@ -28,7 +30,21 @@ public class Paciente {
         this.nombre = datos.nombre();
         this.email = datos.email();
         this.telefono = datos.telefono();
-        this.documentoIdentidad = datos.documentoIdentidad();
+        this.documento = datos.documento();
         this.direccion = new Direccion(datos.direccion());
     }
+
+    public void actualizarInfoPaciente(DatosActualizarPaciente datos) {
+        if (datos.nombre() != null) {
+            this.nombre = datos.nombre();
+        }
+        if (datos.documento() != null) {
+            this.documento = datos.documento();
+        }
+        if (datos.direccion() != null) {
+            this.direccion = new Direccion(datos.direccion());
+        }
+    }
+
+
 }
